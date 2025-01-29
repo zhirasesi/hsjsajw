@@ -11,6 +11,15 @@ app.set('json spaces', 2);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const validApiKeys = [
+	{key: 'zhirahosting', createdAt: '29-01-2025'},
+	 {key: 'ayusoleha', createdAt: '29-01-2025'}
+];
+
+app.get('/apikeys', adminMiddleware, (req, res) => {
+    res.json({ apiKeys: validApiKeys });
+});
+
 app.get('/orkut/createpayment', async (req, res) => {
     const { amount, codeqr } = req.query;
     
