@@ -45,11 +45,7 @@ app.get('/apikeys', adminMiddleware, (req, res) => {
 app.get('/orkut/createpayment', async (req, res) => {
     const { apikey, amount, codeqr } = req.query;
 	
-    if (!apikey) {
-    return res.json("Isi Parameter Apikey")
-    }
-	
-    if (apikey !== validApiKeys) {
+    if (!apikey || apikey !== validApiKeys) {
     return res.json(zhiraHost)
     }
 	
@@ -78,11 +74,7 @@ app.get('/orkut/createpayment', async (req, res) => {
 app.get('/orkut/checkpayment', async (req, res) => {
 	const {apikey, merchant, token } = req.query;
 	
-	if (!apikey) {
-        return res.json("Isi Parameter Apikey")
-        }
-	
-        if (apikey !== validApiKeys) {
+	if (!apikey || apikey !== validApiKeys) {
         return res.json(zhiraHost)
         }
 	
