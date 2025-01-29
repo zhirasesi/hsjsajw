@@ -22,10 +22,10 @@ const adminApiKey = 'zhirahosting05';
 
 // Middleware untuk memeriksa otorisasi admin
 const adminMiddleware = (req, res, next) => {
-    const apiKey = req.query.apiKey || req.headers['x-api-key'];
+    const { password } = req.query;
 
-    if (!apiKey || apiKey !== adminApiKey) {
-        return res.status(403).json({ message: 'Mau Ngapain Bro?😂' });
+    if (!password || password !== adminApiKey) {
+        return res.status(403).json({ Error: 'Mau Ngapain Bro?😂' });
     }
 
     next();
