@@ -14,8 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // API Key untuk user
 const validApiKeys = [
-	{key: 'zhirahosting', createdAt: '29-01-2025'},
-	 {key: 'ayusoleha', createdAt: '29-01-2025'}
+	{zhirahosting'},
+	{'ayusoleha'}
 ];
 
 // API key admin untuk mengakses rute /apikeys
@@ -23,8 +23,7 @@ const adminApiKey = 'zhirahosting05';
 
 // Result jika apikey salah
 const zhiraHost = [
-	{author: zhiraAuthor},
-	{message: 'Buy Apikey 10k/bulan Free Req Username, Unlimited Request. Chat WhatsApp ZhiraHosting : 0881012303956'}
+	{author: zhiraAuthor, message: 'Buy Apikey 10k/bulan Free Req Username, Unlimited Request. Chat WhatsApp ZhiraHosting : 0881012303956'}
 ];
 
 // Middleware untuk memeriksa otorisasi admin
@@ -50,7 +49,7 @@ app.get('/orkut/createpayment', async (req, res) => {
     return res.json("Isi Parameter Apikey")
     }
 	
-    if (apikey !== validApiKeys.key) {
+    if (apikey !== validApiKeys) {
     return res.json(zhiraHost)
     }
 	
@@ -83,7 +82,7 @@ app.get('/orkut/checkpayment', async (req, res) => {
         return res.json("Isi Parameter Apikey")
         }
 	
-        if (apikey !== validApiKeys.key) {
+        if (apikey !== validApiKeys) {
         return res.json(zhiraHost)
         }
 	
