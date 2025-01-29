@@ -13,10 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // API Key untuk user
-const validApiKeys = [
-	"zhirahosting",
-	"ayusoleha"
-];
+const validApiKeys = 'zhirahosting','ayusoleha';
 
 // API key admin untuk mengakses rute /apikeys
 const adminApiKey = 'zhirahosting05';
