@@ -11,11 +11,27 @@ app.set('json spaces', 2);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// API Key untuk user
 const validApiKeys = [
 	{key: 'zhirahosting', createdAt: '29-01-2025'},
 	 {key: 'ayusoleha', createdAt: '29-01-2025'}
 ];
 
+// API key admin untuk mengakses rute /apikeys
+const adminApiKey = 'zhirahosting05';
+
+// Middleware untuk memeriksa otorisasi admin
+const adminMiddleware = (req, res, next) => {
+    const apiKey = req.query.apiKey || req.headers['x-api-key'];
+
+    if (!apiKey || apiKey !== adminApiKey) {
+        return res.status(403).json({ message: 'Mau Ngapain Bro?😂' });
+    }
+
+    next();
+};
+
+// Endpoint untuk mengakses semua apikey
 app.get('/apikeys', adminMiddleware, (req, res) => {
     res.json({ apiKeys: validApiKeys });
 });
