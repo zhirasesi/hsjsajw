@@ -6,6 +6,7 @@ const { createQRIS } = require('./qris');
 
 const app = express();
 const PORT = 3000;
+const zhiraAuthor = 'ZhiraHosting'
 
 app.set('json spaces', 2);
 app.use(express.json());
@@ -19,6 +20,12 @@ const validApiKeys = [
 
 // API key admin untuk mengakses rute /apikeys
 const adminApiKey = 'zhirahosting05';
+
+// Result jika apikey salah
+const zhiraHost = [
+	{author: zhiraAuthor},
+	{message: 'Buy Apikey 10k/bulan Free Req Username, Unlimited Request. Chat WhatsApp ZhiraHosting : 0881012303956'}
+];
 
 // Middleware untuk memeriksa otorisasi admin
 const adminMiddleware = (req, res, next) => {
@@ -37,8 +44,16 @@ app.get('/apikeys', adminMiddleware, (req, res) => {
 });
 
 app.get('/orkut/createpayment', async (req, res) => {
-    const { amount, codeqr } = req.query;
-    
+    const { apikey, amount, codeqr } = req.query;
+	
+    if (!apikey) {
+    return res.json("Isi Parameter Apikey")
+    }
+	
+    if (apikey !== validApiKeys) {
+    return res.json(zhiraHost)
+    }
+	
     if (!amount) {
     return res.json("Isi Parameter Amount")
     }
@@ -62,7 +77,15 @@ app.get('/orkut/createpayment', async (req, res) => {
 });
 
 app.get('/orkut/checkpayment', async (req, res) => {
-	const { merchant, token } = req.query;
+	const {apikey, merchant, token } = req.query;
+	
+	if (!apikey) {
+        return res.json("Isi Parameter Apikey")
+        }
+	
+        if (apikey !== validApiKeys) {
+        return res.json(zhiraHost)
+        }
 	
         if (!merchant) {
         return res.json("Isi Parameter Merchant.");
