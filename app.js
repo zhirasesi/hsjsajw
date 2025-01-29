@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // API Key untuk user
 const validApiKeys = [
-	{zhirahosting'},
+	{'zhirahosting'},
 	{'ayusoleha'}
 ];
 
