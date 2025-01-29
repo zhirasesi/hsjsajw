@@ -13,11 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/orkut/createpayment', async (req, res) => {
-    const { apikey, amount, codeqr } = req.query;
-    
-    if (!apikey || !inDatabase) {
-    return res.json("Isi Parameter Apikey")
-    }
+    const { amount, codeqr } = req.query;
     
     if (!amount) {
     return res.json("Isi Parameter Amount")
@@ -43,11 +39,7 @@ app.get('/orkut/createpayment', async (req, res) => {
 });
 
 app.get('/orkut/checkpayment', async (req, res) => {
-	const { apikey, merchant, token } = req.query;
-    
-        if (!apikey || !inDatabase) {
-        return res.json("Isi Parameter Apikey")
-        }
+	const { merchant, token } = req.query;
 	
         if (!merchant) {
         return res.json("Isi Parameter Merchant.");
