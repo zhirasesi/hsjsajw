@@ -50,7 +50,7 @@ app.get('/orkut/createpayment', async (req, res) => {
     return res.json("Isi Parameter Apikey")
     }
 	
-    if (apikey !== validApiKeys) {
+    if (apikey !== validApiKeys.key) {
     return res.json(zhiraHost)
     }
 	
@@ -83,7 +83,7 @@ app.get('/orkut/checkpayment', async (req, res) => {
         return res.json("Isi Parameter Apikey")
         }
 	
-        if (apikey !== validApiKeys) {
+        if (apikey !== validApiKeys.key) {
         return res.json(zhiraHost)
         }
 	
