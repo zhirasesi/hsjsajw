@@ -39,7 +39,7 @@ const adminMiddleware = (req, res, next) => {
 
 // Endpoint untuk mengakses semua apikey
 app.get('/apikeys', adminMiddleware, (req, res) => {
-    res.json({ apiKeys: validApiKeys });
+    res.json({ status: true, author: zhiraAuthor, apiKeys: validApiKeys });
 });
 
 app.get('/orkut/createpayment', async (req, res) => {
@@ -60,11 +60,12 @@ app.get('/orkut/createpayment', async (req, res) => {
         const qrisData = await createQRIS(amount, codeqr);
         res.json({
             success: true,
+	    author: zhiraAuthor,
             data: qrisData
         });
     } catch (error) {
         res.status(500).json({
-            success: false,
+            status: false,
             message: 'Error generating QRIS',
             error: error.message
         });
