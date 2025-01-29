@@ -6,7 +6,6 @@ const { createQRIS } = require('./qris');
 
 const app = express();
 const PORT = 3000;
-const zhiraAuth = 'ZhiraHosting';
 
 app.set('json spaces', 2);
 app.use(express.json());
@@ -26,7 +25,6 @@ app.get('/orkut/createpayment', async (req, res) => {
         const qrisData = await createQRIS(amount, codeqr);
         res.json({
             success: true,
-            author: zhiraAuth,
             data: qrisData
         });
     } catch (error) {
