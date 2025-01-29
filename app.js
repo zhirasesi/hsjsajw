@@ -13,7 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // API Key untuk user
-const validApiKeys = 'zhirahosting','ayusoleha';
+const validApiKeys = [
+	'zhirahosting',
+	'ayusoleha'
+];
 
 // API key admin untuk mengakses rute /apikeys
 const adminApiKey = 'zhirahosting05';
@@ -42,7 +45,7 @@ app.get('/apikeys', adminMiddleware, (req, res) => {
 app.get('/orkut/createpayment', async (req, res) => {
     const { apikey, amount, codeqr } = req.query;
 	
-    if (!apikey || apikey !== validApiKeys) {
+    if (!apikey || !validApiKeys.includes(apikey)) {
     return res.json(zhiraHost)
     }
 	
@@ -71,7 +74,7 @@ app.get('/orkut/createpayment', async (req, res) => {
 app.get('/orkut/checkpayment', async (req, res) => {
 	const {apikey, merchant, token } = req.query;
 
-	if (!apikey || apikey !== validApiKeys) {
+	if (!apikey || !validApiKeys.includes(apikey)) {
         return res.json(zhiraHost)
         }
 	
