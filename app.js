@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 // API Key untuk user
 const validApiKeys = [
 	'zhirahosting',
-	'ayusoleha'
+	'ranzaja'
 ];
 
 // API key admin untuk mengakses rute /apikeys
@@ -91,7 +91,7 @@ app.get('/orkut/checkpayment', async (req, res) => {
         const response = await axios.get(apiUrl);
         const result = response.data;
         const latestTransaction = result.data[0];
-        res.json('author': zhiraAuth, latestTransaction);
+        res.json(latestTransaction);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
