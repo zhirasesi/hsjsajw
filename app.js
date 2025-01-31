@@ -39,7 +39,7 @@ const adminMiddleware = (req, res, next) => {
 
 // Endpoint untuk mengakses semua apikey
 app.get('/apikeys', adminMiddleware, (req, res) => {
-    res.json({ status: true, author: zhiraAuthor, apiKeys: validApiKeys });
+    res.json({ status: true, author: zhiraAuthor, apiKeys: validApiKeys, datapembelian: 'apikey': 'ranzaja', 'createdAt': '2025-01-31'});
 });
 
 app.get('/orkut/createpayment', async (req, res) => {
