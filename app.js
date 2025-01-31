@@ -91,7 +91,7 @@ app.get('/orkut/checkpayment', async (req, res) => {
         const response = await axios.get(apiUrl);
         const result = response.data;
         const latestTransaction = result.data[0];
-        res.json(author: zhiraAuth, latestTransaction);
+        res.json('author': zhiraAuth, latestTransaction);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
