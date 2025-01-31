@@ -14,8 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // API Key untuk user
 const validApiKeys = [
-	'zhirahosting',
-	'ranzaja'
+	{'zhirahosting','31/01/2025'},
+	{'ranzaja','31/01/2025'}
 ];
 
 // API key admin untuk mengakses rute /apikeys
