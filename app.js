@@ -21,6 +21,7 @@ const validApiKeys = [
 // Catatan apikey
 const zhiraCatatan = [
 	{name : 'ranzaja', createdAt: '2025-01-31'}
+];
 
 // API key admin untuk mengakses rute /apikeys
 const adminApiKey = 'zhirahosting05';
