@@ -15,8 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 // API Key untuk user
 const validApiKeys = [
 	'zhirahosting',
-	'ranzaja' //31-01-2025
+	'ranzaja'
 ];
+
+// Catatan apikey
+const zhiraCatatan = [
+	{name : 'ranzaja', createdAt: '2025-01-31'}
 
 // API key admin untuk mengakses rute /apikeys
 const adminApiKey = 'zhirahosting05';
@@ -39,7 +43,7 @@ const adminMiddleware = (req, res, next) => {
 
 // Endpoint untuk mengakses semua apikey
 app.get('/apikeys', adminMiddleware, (req, res) => {
-    res.json({ status: true, author: zhiraAuthor, apiKeys: validApiKeys, datapembelian: 'apikey': 'ranzaja', 'createdAt': '2025-01-31'});
+    res.json({ status: true, author: zhiraAuthor, apiKeys: validApiKeys, datapembelian: zhiraCatatan});
 });
 
 app.get('/orkut/createpayment', async (req, res) => {
