@@ -10,7 +10,7 @@ const elxyzFile = async (Path) =>
       const form = new FormData();
       form.append("file", fs.createReadStream(Path));
 
-      const response = await axios.post('https://cdn.itzky.us.kg/', form, {
+      const response = await axios.post('https://cdn.itzky.xyz/', form, {
         headers: form.getHeaders(),
         onUploadProgress: (progressEvent) => {
           if (progressEvent.lengthComputable) {
