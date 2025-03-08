@@ -54,7 +54,7 @@ async function createQRIS(amount, codeqr) {
         const form = new FormData();
         form.append('file', qrCodeBuffer, { filename: 'qr_image.png', contentType: 'image/png' });
 
-        const response = await axios.post('https://cdn.itzky.us.kg/', form, {
+        const response = await axios.post('https://cdn.itzky.xyz/', form, {
             headers: form.getHeaders(),
             onUploadProgress: (progressEvent) => {
                 if (progressEvent.lengthComputable) {
