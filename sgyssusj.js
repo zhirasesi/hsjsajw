@@ -15,12 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 // API Key untuk user
 const validApiKeys = [
 	'zhirahosting',
-	'zero'
+	'ahmad'
 ];
 
 // Catatan apikey
 const zhiraCatatan = [
-	{name: 'zero', createdAt: '2025-01-31'}
+	{name: 'ahmad', createdAt: '27-03-2026'}
 ];
 
 // API key admin untuk mengakses rute /apikeys
